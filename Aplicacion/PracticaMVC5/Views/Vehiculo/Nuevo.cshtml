@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Nuevo</h2>
+@*<p>@ViewBag.Message</p>*@
+
+
+<form method="post" action="/Vehiculo/Nuevo">
+    <input type="hidden" name="Id" value="@ViewBag.Cod" />
+    <div class="form-group">
+        <label for="texto">Marca</label>
+        <input type="text" class="form-control" name="Marca" value="@ViewBag.Marca">
+    </div>
+    <div class="form-group">
+        <label for="texto">Precio</label>
+        <input type="number" step="0.01" class="form-control" name="Precio" value="@ViewBag.Precio">
+    </div>
+    <div class="form-group">
+        <label for="texto">Foto</label>
+        <input type="text" class="form-control" name="Foto" value="@ViewBag.Foto">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

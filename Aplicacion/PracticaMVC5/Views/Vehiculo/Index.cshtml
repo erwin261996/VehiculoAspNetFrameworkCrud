@@ -1,0 +1,68 @@
+﻿@model List<PracticaMVC5.Models.VehiculoModels>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Nuevo Vehiculo", "Nuevo", "Vehiculo", new { @class="btn btn-primary" })
+
+<table class="table table-bordered table-hover table-striped" style="margin-top: 5rem;">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Precio</th>
+            <th>Marca</th>
+            <th>Foto</th>
+            <th colspan="2">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ite in Model)
+        {
+            <tr>
+                <th>@ite.Id</th>
+                <th>@ite.Precio</th>
+                <th>@ite.Marca</th>
+                <th>@ite.Foto</th>
+                <th>@Html.ActionLink("Editar", "Nuevo", "Vehiculo", new { Marca = ite.Marca, Precio = ite.Precio, Cod = ite.Id, Foto = ite.Foto },  new { @class = "btn btn-primary" })</th>
+                <th><button class="btn btn-danger btnElimina">Eliminar</button></th>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="AdvEliminacion" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminacion de Vehiculos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Se eliminara este Items, Estas seguro de que quieres eliminarlo ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Eliminar Item</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".btnElimina").on("click", function () {
+                $('#AdvEliminacion').modal({
+                    show: true,
+                    backdrop: 'static'
+                })
+            })
+        })
+    </script>
+}
